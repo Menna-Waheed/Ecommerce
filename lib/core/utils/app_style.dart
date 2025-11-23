@@ -27,9 +27,21 @@ class AppTextStyle {
     fontWeight: FontWeight.w400,
   );
 
+  static TextStyle semiBold16black = GoogleFonts.poppins(
+    color: AppColor.blackColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
   static TextStyle light16White = GoogleFonts.poppins(
     color: AppColor.whiteColor,
     fontSize: 16,
+    fontWeight: FontWeight.w300,
+  );
+
+  static TextStyle light18gray = GoogleFonts.poppins(
+    color: AppColor.grayColor,
+    fontSize: 18,
     fontWeight: FontWeight.w300,
   );
 
