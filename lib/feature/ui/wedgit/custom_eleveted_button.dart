@@ -26,6 +26,8 @@ class CustomElevetedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
@@ -33,6 +35,7 @@ class CustomElevetedButton extends StatelessWidget {
         ),
         elevation: 0,
         backgroundColor: backgroundColor,
+        padding: EdgeInsets.symmetric(vertical: height * 0.02),
       ),
       onPressed: onPressed,
       child: isIcon

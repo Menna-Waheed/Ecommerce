@@ -10,4 +10,5 @@ class AppAssets {
   static const String profileUnSelected =
       'assets/images/profile_unselected.png';
   static const String logoLogin = 'assets/images/logo_login.png';
+  static const String splashIcon = 'assets/images/splash_icons.png';
 }

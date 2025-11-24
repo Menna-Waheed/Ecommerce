@@ -2,13 +2,15 @@ import 'package:ecommerce/core/utils/app_color.dart';
 import 'package:ecommerce/core/utils/app_style.dart';
 import 'package:flutter/material.dart';
 
+typedef OnValidator = String? Function(String?)?;
+
 class CustomeTextFormField extends StatelessWidget {
   CustomeTextFormField({
     super.key,
     this.validator,
     this.controller,
     this.obscureText = false,
-    required this.boarderColor,
+    this.boarderColor,
     this.rediusBoarder = 15,
     required this.hint_text,
     this.hint_style,
@@ -19,43 +21,47 @@ class CustomeTextFormField extends StatelessWidget {
   String? Function(String?)? validator;
   TextEditingController? controller;
   bool obscureText;
-  Color boarderColor;
+  Color? boarderColor;
   double rediusBoarder;
   String hint_text;
-  TextStyle? hint_style = AppTextStyle.light18gray;
+  TextStyle? hint_style;
   Widget? suffixIcon;
   Widget? prefixIcon;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(
-        suffixIcon: suffixIcon,
-        prefixIcon: prefixIcon,
-        hintStyle: hint_style,
-        hintText: hint_text,
+    var height = MediaQuery.of(context).size.height;
+    return Padding(
+      padding: EdgeInsets.only(bottom: height * 0.02, top: height * 0.01),
+      child: TextFormField(
+        decoration: InputDecoration(
+          suffixIcon: suffixIcon,
+          prefixIcon: prefixIcon,
+          hintStyle: hint_style ?? AppTextStyle.light18white,
+          hintText: hint_text,
 
-        errorBorder: customOutlineInputBorder(
-          boarderColor: AppColor.redColor,
-          rediusBoarder: rediusBoarder,
+          errorBorder: customOutlineInputBorder(
+            boarderColor: AppColor.redColor,
+            rediusBoarder: rediusBoarder,
+          ),
+          enabledBorder: customOutlineInputBorder(
+            boarderColor: boarderColor ?? AppColor.whiteColor,
+            rediusBoarder: rediusBoarder,
+          ),
+          focusedErrorBorder: customOutlineInputBorder(
+            boarderColor: AppColor.redColor,
+            rediusBoarder: rediusBoarder,
+          ),
+          focusedBorder: customOutlineInputBorder(
+            boarderColor: boarderColor ?? AppColor.whiteColor,
+            rediusBoarder: rediusBoarder,
+          ),
         ),
-        enabledBorder: customOutlineInputBorder(
-          boarderColor: AppColor.transparentferColor,
-          rediusBoarder: rediusBoarder,
-        ),
-        focusedErrorBorder: customOutlineInputBorder(
-          boarderColor: AppColor.redColor,
-          rediusBoarder: rediusBoarder,
-        ),
-        focusedBorder: customOutlineInputBorder(
-          boarderColor: AppColor.blueColor,
-          rediusBoarder: rediusBoarder,
-        ),
+        validator: validator,
+        controller: controller,
+        obscureText: obscureText,
+        style: AppTextStyle.Regular18White,
       ),
-      validator: validator,
-      controller: controller,
-      obscureText: obscureText,
-      style: AppTextStyle.semiBold16black,
     );
   }
 
